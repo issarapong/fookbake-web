@@ -603,3 +603,22 @@ createAsyncThunk
 
 
  Create Hooks
+
+
+create
+/src/features/auth/components/ProtectedRoute.jsx
+
+```
+export default function ProtectedRoute({children}) {
+  return children;
+}
+
+```
+
+
+## after Authenticated
+/src/layouts/Header.jsx
+
+
+Create icon Fookbake
+/src/icons/index.jsx

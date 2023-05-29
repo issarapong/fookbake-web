@@ -21,6 +21,14 @@ export const registerAsync = createAsyncThunk(
     }
 
 })
+
+export const login = createAsyncThunk('auth/login', async  input => {
+    const res = await authService.login(input);
+    setAccessToken(res.data.accessToken);
+})
+
+
+
 // auth/registerAsynce/pending
 // auth/registerAsynce/rejected
 // auth/registerAsynce/fullfiled
@@ -43,6 +51,8 @@ const authSlice = createSlice({
   .addCase(registerAsync.rejected, (state, action) => {
     state.error = action.payload;
     state.loading = false;
+  }).addCase(login.fulfilled, state => {
+    state.isAuthenticated = true;
   })
 });
 
