@@ -6,6 +6,9 @@ pnpm create vite fookbake-web --template react
 cd fookbake-web
 pnpm install
 pnpm run dev
+pnpm add axios
+pnpm add react-toastify   // alert popup
+pnpm add react-redux @reduxjs/toolkit
 ```
 #### Install tailwind by pnpm
 
@@ -410,3 +413,193 @@ pnpm add joi
 
 create file
 /src/features/auth/validators/validate-register.js
+
+
+## Implement Axios /REGISTER API
+
+
+/src/api/axios.js
+```
+import axios from "axios";
+import { BACKEND_URL } from "../config/env";
+
+axios.defaults.baseURL = BACKEND_URL
+
+export default axios
+```
+
+/src/config/env.js
+```
+export const BACKEND_URL = "http://localhost:8888";
+```
+
+/src/api/auth-api.js
+
+```
+import axios from "./axios";     // ไม่ใช้ Library โดยตรง
+
+
+export const register = input => axios.post('/auth/register', input);
+
+
+```
+/src/utils/localstorage.js
+```
+const ACCESS_TOKEN = 'accessToken'
+export const setAccessToken = token => localStorage.setItem('accessToken', token)
+localStorage.setItem(ACCESS_TOKEN, token)
+```
+/src/features/auth/components/RegisterForm.jsx
+
+
+
+
+
+### implement react-toastify
+
+import to main.jsx
+````
+import 'react-toastify/dist/ReactToastify.css';
+```
+
+import to App.jsx
+
+```
+import { ToastContainer } from 'react-toastify'
+
+// Config to compnent
+
+```
+  return ( <div>
+  
+  <Router />
+   <ToastContainer  position="bottom-center" theme="dark" autoClose={3000}/>   // example config from https://fkhadra.github.io/react-toastify/introduction
+  </div>
+  );
+}
+```
+
+```
+
+
+### after register logn to homepage (With Redux)
+
+
+
+# implement REDUX
+1 . Intall Lib pnpm add react-redux @reduxjs/toolkit
+
+2 . create Store
+src/store/index.js
+```
+import { configureStore } from '@reduxjs/toolkit'
+
+const store = configureStore({});
+
+export default store;
+
+```
+
+import to main.jsx
+
+```
+import { Provider } from 'react-redux'
+
+import store from './store';
+
+
+// Add store to control <App />
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <Provider store={store}>
+    <App />
+    </Provider>
+  </React.StrictMode>,
+)
+
+
+```
+3. create & Import
+/src/features/auth/slice/auth-slice.js
+
+```
+import { createSlice } from '@reduxjs/toolkit'
+
+const initialState = {
+    isAuthenticated: false
+}
+
+const authSlice = createSlice({
+    name: 'auth',
+    initialState
+})
+```
+
+# Add reducer
+
+``
+const authSlice = createSlice({
+    name: 'auth',
+    initialState,
+    reducers: {
+
+   register: state  => {
+        state.isAuthenticated = true;
+    }
+    }
+})
+``
+
+Import stat to to store/index.js
+
+```
+import { configureStore } from '@reduxjs/toolkit'
+import authReducer from '../features/auth/slice/auth-slice'
+
+const store = configureStore({
+   reducer: { 
+    auth: authReducer
+   }
+});
+
+export default store;
+```
+
+import dispatch tp RegisterForm.jsx
+```
+import { useDispatch } from 'react-redux'
+import { register } from '../slice/auth-slice';
+
+
+dispatchEvent(register());
+
+```
+
+create 
+/src/features/auth/components/RedirectIfAuthenticated.jsx
+
+```
+```
+
+import to Router.jsx
+
+
+createAsyncThunk 
+
+
+
+
+
+
+# Validate Login
+
+ src/features/auth/validators/validate-login.js
+
+
+
+ สร้าง Custom hook for reuse LOGIC
+
+ function useForm()  การตั้งชื่อ ฟังชั่น โดยมี use  นำหน้าคือการทำ customhook หรือขึ้นต้นด้วยตัวพิมใหญ่
+
+
+ Create Hooks

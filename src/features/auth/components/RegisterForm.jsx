@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+
 import RegisterInput from './RegisterInput';
 import validateRegister from '../validators/validate-register';
 import InputErrorMessage from './InputErrorMessage';
+import { registerAsync } from '../slice/auth-slice';
 
 const initialInput = {
   firstName: '',
@@ -11,19 +15,29 @@ const initialInput = {
   confirmPassword: ''
 };
 
-export default function RegisterForm() {
+export default function RegisterForm({ onSuccess }) {
   const [input, setInput] = useState(initialInput);
   const [error, setError] = useState({});
+
+  const dispatch = useDispatch();
 
   const handleChangeInput = e => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleSubmitForm = e => {
-    e.preventDefault();
-    const result = validateRegister(input);
-    if (result) {
-      return setError(result);
+  const handleSubmitForm = async e => {
+    try {
+      e.preventDefault();
+      const result = validateRegister(input);
+      if (result) {
+        return setError(result);
+      }
+      setError({});
+      await dispatch(registerAsync(input)).unwrap();
+      toast.success('register successfully');
+      onSuccess();
+    } catch (err) {
+      toast.error(err);
     }
   };
 
