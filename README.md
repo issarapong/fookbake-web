@@ -617,8 +617,11 @@ export default function ProtectedRoute({children}) {
 
 
 ## after Authenticated
+### create memu layout
 /src/layouts/Header.jsx
 
 
 Create icon Fookbake
 /src/icons/index.jsx
+/src/layouts/Menu.jsx
+/src/layouts/MenuItem.jsx
