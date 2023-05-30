@@ -628,3 +628,13 @@ Create icon Fookbake
 
 
 ##  Add profile Dropdown
+
+
+axios getme
+/src/features/auth/slice/auth-slice.js
+
+
+// add user to auth-slice.js
+
+
+## Intercepter
