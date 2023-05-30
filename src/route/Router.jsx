@@ -4,6 +4,10 @@ import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 import Header from "../layouts/Header";
+import FriendPage from "../pages/FriendPage";
+import ProfilePage from "../pages/ProfilePage";
+import { Outlet } from "react-router-dom";
+import Container from "../layouts/Container";
 
 const router = createBrowserRouter([
   {
@@ -12,21 +16,32 @@ const router = createBrowserRouter([
       <RedirectAuthenticated>
         <LoginPage />
       </RedirectAuthenticated>
-    )
+    ),
   },
-  { 
-     path: "/", 
-     element: (
-    // <ProtectedRoute>
-     <HomePage />
-    // </ProtectedRoute>
-     )
-    
-    },
-    {
-        path: '/friend',
-        element:<Header />
-    }
+  {
+    path: "/",
+    element: (
+  <ProtectedRoute>
+    <Container />
+  </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: "/",
+        element: 
+          <HomePage />
+        
+      },
+      {
+        path: "/friend",
+        element: <FriendPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
+      },
+    ],
+  },
 ]);
 
 export default function Router() {

@@ -482,7 +482,7 @@ import { ToastContainer } from 'react-toastify'
 ```
 
 
-### after register logn to homepage (With Redux)
+### after register login to homepage (With Redux)
 
 
 
@@ -625,3 +625,6 @@ Create icon Fookbake
 /src/icons/index.jsx
 /src/layouts/Menu.jsx
 /src/layouts/MenuItem.jsx
+
+
+##  Add profile Dropdown
