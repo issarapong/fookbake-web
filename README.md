@@ -638,3 +638,14 @@ axios getme
 
 
 ## Intercepter
+
+## add feature Profile
+
+src/features/profile/components/ProfileContainer.jsx
+
+
+
+edit profile
+
+/src/features/profile/components/PictureForm.jsx
+/src/features/profile/components/FormButton.jsx

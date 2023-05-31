@@ -6,14 +6,14 @@ export default function Modal({ title, children, width = 27, open, onClose }) {
       {open && (
         <>
           <div className="fixed inset-0 bg-white opacity-70 z-20"></div>
-          <div className="fixed inset-0 z-30" onMouseUp={onclose}>
-            <div className="flex justify-center items-center min-h-full">
+          <div className="fixed inset-0 z-30" onMouseUp={onClose}>
+            <div className="flex justify-center items-center min-h-full p-4">
               <div
                 style={{ maxWidth: `${width}rem` }}
-                className="bg-white rounded-md shadow-[0_0_15px_rbg(0_0_0_/0.2)] flex flex-col overflow-hidden max-h-[calc(100vh-2rem)]"
-                onClick={(e) => e.stopPropagation()}
+                className="bg-white rounded-lg w-full shadow-[0_0_15px_rgb(0_0_0_/0.2)] flex flex-col overflow-hidden max-h-[calc(100vh-2rem)]"
+                onMouseUp={(e) => e.stopPropagation()}
               >
-                <div className="flex justify-between p-4 border-b text-xl">
+                <div className="flex justify-between items-center p-4 border-b text-xl">
                   <div className="invisible">&#10005;</div>
                   <div className="font-bold">{title}</div>
                   <div

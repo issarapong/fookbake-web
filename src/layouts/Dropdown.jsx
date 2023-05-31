@@ -30,7 +30,7 @@ export default function Dropdown() {
       </div>
       {open && (
         <div className="absolute bg-white w-96 right-0 translate-y-1 border rounded-xl shadow-lg p-2">
-          <Link to="/profile">
+          <Link to="/profile" onClick={() => setOpen(false)}>
             <div className="flex items-center gap-4 hover:bg-gray-100 p-2 rounded-xl">
               <Avatar
                 src={user.profileImage}
