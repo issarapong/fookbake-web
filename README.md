@@ -649,3 +649,18 @@ edit profile
 
 /src/features/profile/components/PictureForm.jsx
 /src/features/profile/components/FormButton.jsx
+
+# Context
+
+1 สร้างระบบ Context
+/src/features/profile/context/ProfileContextProvider.jsx
+/src/features/profile/hooks/userProfile.js
+
+
+/src/pages/ProfilePage.jsx
+
+
+
+# Useparam
+src/features/profile/components/ProfileContainer.jsx
+/src/features/profile/context/ProfileContextProvider.jsx

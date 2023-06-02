@@ -4,7 +4,8 @@ import Router from "./route/Router"
 import { ToastContainer } from 'react-toastify'
 
 function App() {
-   const initiaLoading = useSelector(state => state.auth.initiaLoading)
+   const initiaLoading = useSelector(state => state.auth.initialLoading)
+   console.log(initiaLoading)
    if(initiaLoading) {
     return  <Loading />
    }
