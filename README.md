@@ -9,6 +9,7 @@ pnpm run dev
 pnpm add axios
 pnpm add react-toastify   // alert popup
 pnpm add react-redux @reduxjs/toolkit
+pnpm add javascript-time-ago
 ```
 #### Install tailwind by pnpm
 
